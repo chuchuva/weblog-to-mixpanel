@@ -7,7 +7,7 @@ else
 fi
 
 echo "Previously imported: $lines_imported"
-tail -n +"$((lines_imported+1))" web-access.log > new.log
+tail -n +"$((lines_imported+1))" web-access.log > new.log || exit 1
 node import.js || exit 1
 new_lines_imported=$(wc -l < new.log)
 echo "new_lines_imported: $new_lines_imported"
